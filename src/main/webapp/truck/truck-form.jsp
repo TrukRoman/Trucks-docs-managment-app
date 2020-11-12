@@ -76,11 +76,11 @@
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label>Insurance Validity</label> <input type="text" value="<c:out value='${driver.insuranceValidity}' />" class="form-control" name="insuranceValidity">
+                        <label>Insurance Validity</label> <input type="text" value="<c:out value='${truck.insuranceValidity}' />" class="form-control" name="insuranceValidity">
                     </fieldset>
 
                     <fieldset class="form-group">
-                        <label>Technical Inspection Validity</label> <input type="text" value="<c:out value='${driver.technicalInspectionValidity}' />" class="form-control" name="technicalInspectionValidity">
+                        <label>Technical Inspection Validity</label> <input type="text" value="<c:out value='${truck.technicalInspectionValidity}' />" class="form-control" name="technicalInspectionValidity">
                     </fieldset>
 
                     <button type="submit" class="btn btn-success">Save</button>
