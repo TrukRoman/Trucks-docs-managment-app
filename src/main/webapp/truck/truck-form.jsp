@@ -20,11 +20,11 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #169a00">
         <div>
-            <a href="<%=request.getContextPath()%>/" class="navbar-brand"> Truck Docs Management App </a>
+            <a href="<%=request.getContextPath()%>/driver" class="navbar-brand"> Truck Docs Management App </a>
         </div>
 
         <ul class="navbar-nav">
-            <li><a href="<%=request.getContextPath()%>/list" class="nav-link">Drivers</a></li>
+            <li><a href="<%=request.getContextPath()%>/driver" class="nav-link">Drivers</a></li>
             <li><a href="<%=request.getContextPath()%>/truck" class="nav-link">Trucks</a></li>
         </ul>
     </nav>

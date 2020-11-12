@@ -12,10 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.dao.DriverDAO;
 import by.model.Driver;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-public class DriverOperations {
+@Controller
+public class DriverController {
     private static final DriverDAO driverDAO = new DriverDAO();
 
+    @RequestMapping(value="/driver", method= RequestMethod.GET)
     void listDriver(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List <Driver> listDriver = driverDAO.selectAllDriver();
@@ -24,12 +29,14 @@ public class DriverOperations {
         dispatcher.forward(request, response);
     }
 
+    @RequestMapping(value="/newdriver", method= RequestMethod.GET)
     void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("driver/driver-form.jsp");
         dispatcher.forward(request, response);
     }
 
+    @RequestMapping(value="/editDriver", method= RequestMethod.GET)
     void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -39,6 +46,7 @@ public class DriverOperations {
         dispatcher.forward(request, response);
     }
 
+    @RequestMapping(value="/insertDriver", method= RequestMethod.POST)
     void insertDriver(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String name = request.getParameter("name");
@@ -53,6 +61,7 @@ public class DriverOperations {
         response.sendRedirect("driver");
     }
 
+    @RequestMapping(value="/updateDriver", method= RequestMethod.POST)
     void updateDriver(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -68,6 +77,7 @@ public class DriverOperations {
         response.sendRedirect("driver");
     }
 
+    @RequestMapping(value="/deleteDriver", method= RequestMethod.GET)
     void deleteDriver(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -75,6 +85,7 @@ public class DriverOperations {
         response.sendRedirect("driver");
     }
 
+    @RequestMapping(value="/validatyDriver", method= RequestMethod.GET)
     void showAllDriverWhoseValidatyIsEnds(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List<Driver> listDriver = driverDAO.selectAllDriverWhoseValidatyIsEnds();
