@@ -7,7 +7,7 @@ control over documents, quickly add new tracks, drivers, and edit data.
 #### Technologies used:
 + Java
 + Spring MVC
-+ JDBC
++ Hibernate
 + PostgreSQL
 + Maven
 + TomCat

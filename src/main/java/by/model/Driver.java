@@ -1,14 +1,32 @@
 package by.model;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name = "drivers")
 public class Driver {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "driverLicenceNum")
     private String driverLicenceNum;
+
+    @Column(name = "category")
     private String category;
+
+    @Column(name = "dlvalidity")
     private Date dlvalidity;
+
+    @Column(name = "medicalCertificateNumber")
     private String medicalCertificateNumber;
+
+    @Column(name = "mcvalidaty")
     private Date mcvalidaty;
 
     public Driver() {}

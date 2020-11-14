@@ -1,15 +1,35 @@
 package by.model;
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name = "trucks")
 public class Truck {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "model")
     private String model;
+
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "yearOfProduction")
     private Date yearOfProduction;
+
+    @Column(name = "registerSign")
     private String registerSign;
+
+    @Column(name = "insuranceNumber")
     private String insuranceNumber;
+
+    @Column(name = "insuranceValidity")
     private Date insuranceValidity;
+
+    @Column(name = "technicalInspectionValidity")
     private Date technicalInspectionValidity;
 
     public Truck() {}
