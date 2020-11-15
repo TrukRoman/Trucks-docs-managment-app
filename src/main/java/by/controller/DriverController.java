@@ -13,8 +13,8 @@ import by.model.Driver;
 import by.service.IDriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class DriverController {
@@ -26,7 +26,7 @@ public class DriverController {
         this.driverServiceImp = driverServiceImp;
     }
 
-    @RequestMapping(value="/driver", method= RequestMethod.GET)
+    @GetMapping(value = "driver")
     void listDriver(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List <Driver> listDriver = driverServiceImp.selectAll();
@@ -35,14 +35,14 @@ public class DriverController {
         dispatcher.forward(request, response);
     }
 
-    @RequestMapping(value="/newdriver", method= RequestMethod.GET)
+    @GetMapping(value="/newdriver")
     void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("driver/driver-form.jsp");
         dispatcher.forward(request, response);
     }
 
-    @RequestMapping(value="/editDriver", method= RequestMethod.GET)
+    @GetMapping(value="/editDriver")
     void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -52,7 +52,7 @@ public class DriverController {
         dispatcher.forward(request, response);
     }
 
-    @RequestMapping(value="/insertDriver", method= RequestMethod.POST)
+    @PostMapping(value="/insertDriver")
     void insertDriver(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String name = request.getParameter("name");
@@ -67,7 +67,7 @@ public class DriverController {
         response.sendRedirect("driver");
     }
 
-    @RequestMapping(value="/updateDriver", method= RequestMethod.POST)
+    @PostMapping(value="/updateDriver")
     void updateDriver(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -83,7 +83,7 @@ public class DriverController {
         response.sendRedirect("driver");
     }
 
-    @RequestMapping(value="/deleteDriver", method= RequestMethod.GET)
+    @GetMapping(value="/deleteDriver")
     void deleteDriver(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -91,7 +91,7 @@ public class DriverController {
         response.sendRedirect("driver");
     }
 
-    @RequestMapping(value="/validatyDriver", method= RequestMethod.GET)
+    @GetMapping(value="/validatyDriver")
     void showAllDriverWhoseValidatyIsEnds(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List<Driver> listDriver = driverServiceImp.selectAllWhoseValidatyIsEnds();

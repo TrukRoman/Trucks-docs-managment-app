@@ -4,8 +4,8 @@ import by.model.Truck;
 import by.service.ITruckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class TruckController {
         this.truckServiceImp = truckServiceImp;
     }
 
-    @RequestMapping(value="/truck", method= RequestMethod.GET)
+    @GetMapping(value="/truck")
     void listTrucks(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List<Truck> listTrucks = truckServiceImp.selectAll();
@@ -34,14 +34,14 @@ public class TruckController {
         dispatcher.forward(request, response);
     }
 
-    @RequestMapping(value="/newtruck", method= RequestMethod.GET)
+    @GetMapping(value="/newtruck")
     void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/truck/truck-form.jsp");
         dispatcher.forward(request, response);
     }
 
-    @RequestMapping(value="/editTruck", method= RequestMethod.GET)
+    @GetMapping(value="/editTruck")
     void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -51,7 +51,7 @@ public class TruckController {
         dispatcher.forward(request, response);
     }
 
-    @RequestMapping(value="/insertTruck", method= RequestMethod.POST)
+    @PostMapping(value="/insertTruck")
     void insertTruck(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         String model = request.getParameter("model");
@@ -67,7 +67,7 @@ public class TruckController {
         response.sendRedirect("truck");
     }
 
-    @RequestMapping(value="/updateTruck", method= RequestMethod.POST)
+    @PostMapping(value="/updateTruck")
     void updateTruck(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -84,7 +84,7 @@ public class TruckController {
         response.sendRedirect("truck");
     }
 
-    @RequestMapping(value="/deleteTruck", method= RequestMethod.GET)
+    @GetMapping(value="/deleteTruck")
     void deleteTruck(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -92,7 +92,7 @@ public class TruckController {
         response.sendRedirect("truck");
     }
 
-    @RequestMapping(value="/validatyTruck", method= RequestMethod.GET)
+    @GetMapping(value="/validatyTruck")
     void showAllTruckWhoseValidatyIsEnds(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         List<Truck> listTruck = truckServiceImp.selectAllWhoseValidatyIsEnds();
